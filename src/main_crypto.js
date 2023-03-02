@@ -33,7 +33,6 @@ const HashlipsGiffer = require(`${basePath}/modules/HashlipsGiffer.js`);
 
 let hashlipsGiffer = null;
 
-// initialize
 const buildSetup = () => {
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });
@@ -334,7 +333,6 @@ function shuffle(array) {
   }
   return array;
 }
-// buildSetup()ののちstartCreating();がindexjsでは時はしる
 
 const startCreating = async () => {
   let layerConfigIndex = 0;
@@ -428,7 +426,7 @@ const startCreating = async () => {
     }
     layerConfigIndex++;
   }
-  // writeMetaData(JSON.stringify(metadataList, null, 2));
+  writeMetaData(JSON.stringify(metadataList, null, 2));
 };
 
 module.exports = { startCreating, buildSetup, getElements };

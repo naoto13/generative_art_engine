@@ -2,41 +2,20 @@
 
 ![](https://github.com/HashLips/hashlips_art_engine/blob/main/logo.png)
 
-All the code in these repos was created and explained by HashLips on the main YouTube channel.
-
-To find out more please visit:
-
-[📺 YouTube](https://www.youtube.com/channel/UC1LV4_VQGBJHTJjEWUmy8nA)
-
-[👄 Discord](https://discord.com/invite/qh6MWhMJDN)
-
-[💬 Telegram](https://t.me/hashlipsnft)
-
-[🐦 Twitter](https://twitter.com/hashlipsnft)
-
-[ℹ️ Website](https://hashlips.online/HashLips)
-
 # HashLips Art Engine 🔥
 
-![](https://github.com/HashLips/hashlips_art_engine/blob/main/banner.png)
-
-Create generative art by using the canvas api and node js. Before you use the generation engine, make sure you have node.js(v10.18.0) installed.
+参考
+https://note.com/standenglish/
 
 ## Installation 🛠️
 
-If you are cloning the project then run this first, otherwise you can download the source code on the release page and skip this step.
-
-```sh
-git clone https://github.com/HashLips/hashlips_art_engine.git
-```
-
-Go to the root of your folder and run this command if you have yarn installed.
+フォルダのルートに移動し、yarnがインストールされている場合は、このコマンドを実行します。
 
 ```sh
 yarn install
 ```
 
-Alternatively you can run this command if you have node installed.
+また、nodeがインストールされている場合は、このコマンドを実行することもできます。
 
 ```sh
 npm install
@@ -44,11 +23,11 @@ npm install
 
 ## Usage ℹ️
 
-Create your different layers as folders in the 'layers' directory, and add all the layer assets in these directories. You can name the assets anything as long as it has a rarity weight attached in the file name like so: `example element#70.png`. You can optionally change the delimiter `#` to anything you would like to use in the variable `rarityDelimiter` in the `src/config.js` file.
+layers」ディレクトリにフォルダを作成し、その中に全てのレイヤーアセットを追加してください。アセット名は、ファイル名にレアリティのウェイトが付いていれば何でもOKです。例えば、`example element#70.png` のように。オプションとして、デリミタ `#` を `src/config.js` ファイル内の変数 `rarityDelimiter` で好きなものに変更することができます。
 
-Once you have all your layers, go into `src/config.js` and update the `layerConfigurations` objects `layersOrder` array to be your layer folders name in order of the back layer to the front layer.
+全てのレイヤーを配置したら、`src/config.js` に移動して `layerConfigurations` オブジェクトの `layersOrder` 配列を更新し、レイヤーフォルダー名を後ろのレイヤーから前のレイヤーへ順番に並べてください。
 
-_Example:_ If you were creating a portrait design, you might have a background, then a head, a mouth, eyes, eyewear, and then headwear, so your `layersOrder` would look something like this:
+例:_ ポートレートデザインを作成する場合、背景、頭、口、目、眼鏡、そしてヘッドウェアの順で作成します。
 
 ```js
 const layerConfigurations = [
@@ -65,11 +44,11 @@ const layerConfigurations = [
 ];
 ```
 
-The `name` of each layer object represents the name of the folder (in `/layers/`) that the images reside in.
+各レイヤーオブジェクトの `name` は、画像が格納されているフォルダ名（`/layers/` 内）を表します。
 
-Optionally you can now add multiple different `layerConfigurations` to your collection. Each configuration can be unique and have different layer orders, use the same layers or introduce new ones. This gives the artist flexibility when it comes to fine tuning their collections to their needs.
+オプションとして、複数の異なる `layerConfigurations` をコレクションに追加することができます。各設定はユニークで、異なるレイヤーオーダーを持つことができ、同じレイヤーを使用したり、新しいレイヤーを導入したりすることができます。これは、アーティストが自分のニーズに合わせてコレクションを微調整する際に、柔軟性を与えます。
 
-_Example:_ If you were creating a portrait design, you might have a background, then a head, a mouth, eyes, eyewear, and then headwear and you want to create a new race or just simple re-order the layers or even introduce new layers, then you're `layerConfigurations` and `layersOrder` would look something like this:
+例：ポートレートデザインを作成する場合、背景、頭、口、目、眼鏡、そしてヘッドウェアがあり、新しいレースを作成したり、単純にレイヤーの順番を変えたり、新しいレイヤーを追加する場合、`layerConfigurations` と `layersOrder` は次のようになります。
 
 ```js
 const layerConfigurations = [
@@ -101,21 +80,21 @@ const layerConfigurations = [
 ];
 ```
 
-Update your `format` size, ie the outputted image size, and the `growEditionSizeTo` on each `layerConfigurations` object, which is the amount of variation outputted.
+出力される画像サイズである `format` サイズと、出力されるバリエーション量である各 `layerConfigurations` オブジェクトの `growEditionSizeTo` を更新してください。
 
-You can mix up the `layerConfigurations` order on how the images are saved by setting the variable `shuffleLayerConfigurations` in the `config.js` file to true. It is false by default and will save all images in numerical order.
+コンフィグ.js`ファイル内の変数 `shuffleLayerConfigurations` を true に設定すると、画像を保存する `layerConfigurations` の順序を混ぜることができます。デフォルトではfalseになっており、すべての画像が数値順に保存されます。
 
-If you want to have logs to debug and see what is happening when you generate images you can set the variable `debugLogs` in the `config.js` file to true. It is false by default, so you will only see general logs.
+もし、画像を生成するときに何が起こっているのかをデバッグするためにログを残したい場合は、`config.js`ファイル内の変数 `debugLogs` をtrueに設定することができます。デフォルトでは false になっているので、一般的なログしか見えません。
 
-If you want to play around with different blending modes, you can add a `blend: MODE.colorBurn` field to the layersOrder `options` object.
+もし、異なるブレンドモードで遊びたい場合は、 `blend.MODE.colorBurn` フィールドを追加してください。MODE.colorBurn` フィールドを追加することができます。
 
-If you need a layers to have a different opacity then you can add the `opacity: 0.7` field to the layersOrder `options` object as well.
+もし、レイヤーの不透明度を変えたい場合は、laysOrder `options` オブジェクトに `opacity: 0.7` フィールドを追加することができます。
 
-If you want to have a layer _ignored_ in the DNA uniqueness check, you can set `bypassDNA: true` in the `options` object. This has the effect of making sure the rest of the traits are unique while not considering the `Background` Layers as traits, for example. The layers _are_ included in the final image.
+DNAの一意性チェックでレイヤーを無視させたい場合は、`options`オブジェクトに `bypassDNA: true` を設定します。これは、例えば `Background` レイヤーを形質として考慮しない一方で、残りの形質がユニークであることを確認する効果があります。レイヤーは最終的な画像に含まれます。
 
-To use a different metadata attribute name you can add the `displayName: "Awesome Eye Color"` to the `options` object. All options are optional and can be addes on the same layer if you want to.
+別のメタデータ属性名を使用するには、`displayName: "Awesome Eye Color"` を `options` オブジェクトに追加します。すべてのオプションはオプションであり、必要であれば同じレイヤーに追加することができます。
 
-Here is an example on how you can play around with both filter fields:
+以下は、両方のフィルターフィールドを使った場合の例です。
 
 ```js
 const layerConfigurations = [
@@ -145,7 +124,7 @@ const layerConfigurations = [
 ];
 ```
 
-Here is a list of the different blending modes that you can optionally use.
+オプションで使用できるブレンドモードの一覧はこちらです。
 
 ```js
 const MODE = {
@@ -178,7 +157,7 @@ const MODE = {
 };
 ```
 
-When you are ready, run the following command and your outputted art will be in the `build/images` directory and the json in the `build/json` directory:
+準備ができたら、以下のコマンドを実行すると、出力されたアートは `build/images` ディレクトリに、json は `build/json` ディレクトリに置かれます。
 
 ```sh
 npm run build
@@ -190,7 +169,7 @@ or
 node index.js
 ```
 
-The program will output all the images in the `build/images` directory along with the metadata files in the `build/json` directory. Each collection will have a `_metadata.json` file that consists of all the metadata in the collection inside the `build/json` directory. The `build/json` folder also will contain all the single json files that represent each image file. The single json file of a image will look something like this:
+Tこのプログラムは、`build/images` ディレクトリにあるすべての画像を、`build/json` ディレクトリにあるメタデータファイルとともに出力します。各コレクションは `_metadata.json` ファイルを持ち、これは `build/json` ディレクトリにあるコレクションのすべてのメタデータから構成されます。また、`build/json` フォルダには、各画像ファイルを表す全てのシングルjsonファイルが格納されます。画像のシングルjsonファイルは、以下のようなものになります。
 
 ```json
 {
@@ -213,7 +192,8 @@ The program will output all the images in the `build/images` directory along wit
 }
 ```
 
-You can also add extra metadata to each metadata file by adding your extra items, (key: value) pairs to the `extraMetadata` object variable in the `config.js` file.
+また、`config.js` ファイル内の `extraMetadata` オブジェクト変数に、追加したい項目 (key: value) のペアを追加すれば、各メタデータ・ファイルに余分なメタデータを追加することができます。
+
 
 ```js
 const extraMetadata = {
@@ -221,19 +201,18 @@ const extraMetadata = {
 };
 ```
 
-If you don't need extra metadata, simply leave the object empty. It is empty by default.
+余分なメタデータが必要ない場合は、単にオブジェクトを空にしてください。デフォルトでは空です。
 
 ```js
 const extraMetadata = {};
 ```
 
-That's it, you're done.
 
 ## Utils
 
 ### Updating baseUri for IPFS and description
 
-You might possibly want to update the baseUri and description after you have ran your collection. To update the baseUri and description simply run:
+コレクションを実行した後で、baseUri と description を更新したくなるかもしれません。baseUri と description を更新するには、単に以下を実行します。
 
 ```sh
 npm run update_info
@@ -241,7 +220,7 @@ npm run update_info
 
 ### Generate a preview image
 
-Create a preview image collage of your collection, run:
+コレクションのプレビュー画像コラージュを作成し、実行します。
 
 ```sh
 npm run preview
@@ -249,16 +228,15 @@ npm run preview
 
 ### Generate pixelated images from collection
 
-In order to convert images into pixelated images you would need a list of images that you want to convert. So run the generator first.
-
-Then simply run this command:
+画像をピクセル画像に変換するためには、変換したい画像のリストが必要です。そこで、まずジェネレーターを実行します。
+そして、このコマンドを実行するだけです。
 
 ```sh
 npm run pixelate
 ```
 
-All your images will be outputted in the `/build/pixel_images` directory.
-If you want to change the ratio of the pixelation then you can update the ratio property on the `pixelFormat` object in the `src/config.js` file. The lower the number on the left, the more pixelated the image will be.
+すべての画像は `/build/pixel_images` ディレクトリに出力されます。
+もし、ピクセル化の比率を変更したい場合は、 `src/config.js` ファイルにある `pixelFormat` オブジェクトの ratio プロパティを更新してください。左側の数字が小さいほど、画像のピクセル化が強くなります。
 
 ```js
 const pixelFormat = {
@@ -266,31 +244,14 @@ const pixelFormat = {
 };
 ```
 
-### Generate GIF images from collection
-
-In order to export gifs based on the layers created, you just need to set the export on the `gif` object in the `src/config.js` file to `true`. You can also play around with the `repeat`, `quality` and the `delay` of the exported gif.
-
-Setting the `repeat: -1` will produce a one time render and `repeat: 0` will loop forever.
-
-```js
-const gif = {
-  export: true,
-  repeat: 0,
-  quality: 100,
-  delay: 500,
-};
-```
-
 ### Printing rarity data (Experimental feature)
 
-To see the percentages of each attribute across your collection, run:
-
+コレクション全体の各属性のパーセンテージを見るには、以下を実行します。
 ```sh
 npm run rarity
 ```
 
-The output will look something like this:
-
+このような出力になります。
 ```sh
 Trait type: Top lid
 {
@@ -310,4 +271,3 @@ Trait type: Top lid
 }
 ```
 
-Hope you create some awesome artworks with this code 👄

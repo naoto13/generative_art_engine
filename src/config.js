@@ -11,7 +11,7 @@ const baseUri = "ipfs://NewUriToReplace";
 
 const solanaMetadata = {
   symbol: "YC",
-  seller_fee_basis_points: 1000, // Define how much % you want from secondary market sales 1000 = 10%
+  seller_fee_basis_points: 1000, // セカンダリーマーケットの売上からどれだけの割合を得るかを定義する 1000 = 10
   external_url: "https://www.youtube.com/c/hashlipsnft",
   creators: [
     {
@@ -21,18 +21,15 @@ const solanaMetadata = {
   ],
 };
 
-// If you have selected Solana then the collection starts from 0 automatically
+// Solanaを選択した場合、コレクションは自動的に0から開始されます。
 const layerConfigurations = [
   {
-    growEditionSizeTo: 5,
+    growEditionSizeTo: 10,
     layersOrder: [
       { name: "Background" },
-      { name: "Eyeball" },
-      { name: "Eye color" },
-      { name: "Iris" },
-      { name: "Shine" },
-      { name: "Bottom lid" },
-      { name: "Top lid" },
+      { name: "Eye" },
+      { name: "Hair" },
+      { name: "Mouse" },
     ],
   },
 ];
