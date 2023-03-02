@@ -334,8 +334,8 @@ function shuffle(array) {
   }
   return array;
 }
-// buildSetup()ののちstartCreating();がindexjsでは時はしる
 
+// 主要関数
 const startCreating = async () => {
   let layerConfigIndex = 0;
   let editionCount = 1;
@@ -384,9 +384,10 @@ const startCreating = async () => {
             );
             hashlipsGiffer.start();
           }
-          if (background.generate) {
-            drawBackground();
-          }
+          // ランダム背景
+          // if (background.generate) {
+          //   drawBackground();
+          // }
           renderObjectArray.forEach((renderObject, index) => {
             drawElement(
               renderObject,

@@ -22,14 +22,23 @@ const solanaMetadata = {
 };
 
 // Solanaを選択した場合、コレクションは自動的に0から開始されます。
+// const layerConfigurations = [
+//   {
+//     growEditionSizeTo: 1000,
+//     layersOrder: [
+//       { name: "basic" },
+//       { name: "Eye" },
+//       { name: "Hair" },
+//       { name: "Mouse" },
+//     ],
+//   },
+// ];
 const layerConfigurations = [
   {
     growEditionSizeTo: 10,
     layersOrder: [
-      { name: "Background" },
-      { name: "Eye" },
-      { name: "Hair" },
-      { name: "Mouse" },
+      { name: "Face" },
+      { name: "cloth" },
     ],
   },
 ];

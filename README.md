@@ -270,4 +270,3 @@ Trait type: Top lid
   occurrence: '14 in 20 editions (70.00 %)'
 }
 ```
-
