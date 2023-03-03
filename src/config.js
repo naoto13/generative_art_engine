@@ -35,7 +35,7 @@ const solanaMetadata = {
 // ];
 const layerConfigurations = [
   {
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 5,
     layersOrder: [
       { name: "Face" },
       { name: "cloth" },
