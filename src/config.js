@@ -35,10 +35,11 @@ const solanaMetadata = {
 // ];
 const layerConfigurations = [
   {
-    growEditionSizeTo: 5,
+    growEditionSizeTo: 100,
     layersOrder: [
-      { name: "Face" },
+      { name: "face_result" },
       { name: "cloth" },
+      { name: "rare" },
     ],
   },
 ];
