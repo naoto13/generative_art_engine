@@ -111,9 +111,13 @@ const layersSetup = (layersOrder) => {
   return layers;
 };
 
-const saveImage = (_editionCount) => {
+const saveImage = (_layerConfigIndex, _editionCount) => {
+  outputDirectory = `${buildDir}/images/${_layerConfigIndex}/`
+  if (!fs.existsSync(outputDirectory)) {
+    fs.mkdirSync(outputDirectory, { recursive: true });
+  }
   fs.writeFileSync(
-    `${buildDir}/images/${_editionCount}.png`,
+    outputDirectory+`${_editionCount}.png`,
     canvas.toBuffer("image/png")
   );
 };
@@ -341,26 +345,35 @@ const startCreating = async () => {
   let editionCount = 1;
   let failedCount = 0;
   let abstractedIndexes = [];
-  for (
-    let i = network == NETWORK.sol ? 0 : 1;
-    i <= layerConfigurations[layerConfigurations.length - 1].growEditionSizeTo;
-    i++
-  ) {
-    abstractedIndexes.push(i);
-  }
-  if (shuffleLayerConfigurations) {
-    abstractedIndexes = shuffle(abstractedIndexes);
-  }
-  debugLogs
-    ? console.log("Editions left to create: ", abstractedIndexes)
-    : null;
+  console.log("layerConfigurations[layerConfigurations.length - 1].growEditionSizeTo:",layerConfigurations[layerConfigurations.length-1]);
   while (layerConfigIndex < layerConfigurations.length) {
+    for (
+      let i = network == NETWORK.sol ? 0 : 1;
+      i <= layerConfigurations[layerConfigIndex].growEditionSizeTo;
+      i++
+    ) {
+      console.log("abstractedIndexesにpush,",i)
+      abstractedIndexes.push(i);
+    }
+    if (shuffleLayerConfigurations) {
+      abstractedIndexes = shuffle(abstractedIndexes);
+    }
+    debugLogs
+      ? console.log("Editions left to create: ", abstractedIndexes)
+      : null;
+      
+    console.log("layerConfigIndex:",layerConfigIndex)
+    console.log("layerConfigurations.length:",layerConfigurations.length)
     const layers = layersSetup(
       layerConfigurations[layerConfigIndex].layersOrder
     );
+    editionCount =1
+    //各画像数growEditionSizeToのループ
     while (
       editionCount <= layerConfigurations[layerConfigIndex].growEditionSizeTo
     ) {
+      console.log("editionCount:",editionCount)
+      console.log("layerConfigurations[layerConfigIndex].growEditionSizeTo:",layerConfigurations[layerConfigIndex].growEditionSizeTo)
       let newDna = createDna(layers);
       if (isDnaUnique(dnaList, newDna)) {
         let results = constructLayerToDna(newDna, layers);
@@ -404,11 +417,14 @@ const startCreating = async () => {
           debugLogs
             ? console.log("Editions left to create: ", abstractedIndexes)
             : null;
-          saveImage(abstractedIndexes[0]);
-          addMetadata(newDna, abstractedIndexes[0]);
-          saveMetaDataSingleFile(abstractedIndexes[0]);
+          console.log("layerConfigIndex:",layerConfigIndex) // 0~3
+          console.log("abstractedIndexes:",abstractedIndexes) // 0~100
+          console.log("abstractedIndexes[layerConfigIndex]:",abstractedIndexes[0]) // 0~100
+          saveImage(layerConfigIndex, abstractedIndexes[0] );
+          // addMetadata(newDna, abstractedIndexes[0]);
+          // saveMetaDataSingleFile(abstractedIndexes[0]);
           console.log(
-            `Created edition: ${abstractedIndexes[0]}, with DNA: ${sha1(
+            `Created edition: layer:${layerConfigIndex}, index:${abstractedIndexes[0]}, with DNA: ${sha1(
               newDna
             )}`
           );
@@ -426,6 +442,7 @@ const startCreating = async () => {
           process.exit();
         }
       }
+
     }
     layerConfigIndex++;
   }

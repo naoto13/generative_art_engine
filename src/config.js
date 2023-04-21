@@ -35,13 +35,27 @@ const solanaMetadata = {
 // ];
 const layerConfigurations = [
   {
-    growEditionSizeTo: 100,
+    growEditionSizeTo: 4,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth" },
+    ],
+  },
+  {
+    growEditionSizeTo: 10,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth" },
       { name: "rare" },
     ],
   },
+  {
+    growEditionSizeTo: 3,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth" },
+    ],
+  }
 ];
 
 const shuffleLayerConfigurations = false;
@@ -49,8 +63,8 @@ const shuffleLayerConfigurations = false;
 const debugLogs = false;
 
 const format = {
-  width: 512,
-  height: 512,
+  width: 1024,
+  height: 1024,
   smoothing: false,
 };
 
