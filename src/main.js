@@ -361,9 +361,6 @@ const startCreating = async () => {
     debugLogs
       ? console.log("Editions left to create: ", abstractedIndexes)
       : null;
-      
-    console.log("layerConfigIndex:",layerConfigIndex)
-    console.log("layerConfigurations.length:",layerConfigurations.length)
     const layers = layersSetup(
       layerConfigurations[layerConfigIndex].layersOrder
     );
@@ -372,8 +369,6 @@ const startCreating = async () => {
     while (
       editionCount <= layerConfigurations[layerConfigIndex].growEditionSizeTo
     ) {
-      console.log("editionCount:",editionCount)
-      console.log("layerConfigurations[layerConfigIndex].growEditionSizeTo:",layerConfigurations[layerConfigIndex].growEditionSizeTo)
       let newDna = createDna(layers);
       if (isDnaUnique(dnaList, newDna)) {
         let results = constructLayerToDna(newDna, layers);
@@ -417,10 +412,7 @@ const startCreating = async () => {
           debugLogs
             ? console.log("Editions left to create: ", abstractedIndexes)
             : null;
-          console.log("layerConfigIndex:",layerConfigIndex) // 0~3
-          console.log("abstractedIndexes:",abstractedIndexes) // 0~100
-          console.log("abstractedIndexes[layerConfigIndex]:",abstractedIndexes[0]) // 0~100
-          saveImage(layerConfigIndex, abstractedIndexes[0] );
+          saveImage(layerConfigurations[layerConfigIndex].fileName, abstractedIndexes[0] );
           // addMetadata(newDna, abstractedIndexes[0]);
           // saveMetaDataSingleFile(abstractedIndexes[0]);
           console.log(
