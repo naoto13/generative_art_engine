@@ -33,15 +33,11 @@ const solanaMetadata = {
 //     ],
 //   },
 // ];
+
+// 
 const layerConfigurations = [
   {
-    growEditionSizeTo: 4,
-    layersOrder: [
-      { name: "face_result" },
-      { name: "cloth" },
-    ],
-  },
-  {
+    fileName: "weapon_off/helmet_off/aura",
     growEditionSizeTo: 10,
     layersOrder: [
       { name: "face_result" },
@@ -50,12 +46,65 @@ const layerConfigurations = [
     ],
   },
   {
-    growEditionSizeTo: 3,
+    fileName: "weapon_off/helmet_off/none",
+    growEditionSizeTo: 10,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth" },
     ],
-  }
+  },
+  {
+    fileName: "weapon_off/helmet_on/aura",
+    growEditionSizeTo: 10,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth_h" },
+      { name: "rare" },
+    ],
+  },
+  {
+    fileName: "weapon_off/helmet_on/none",
+    growEditionSizeTo: 10,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth_h" },
+    ],
+  },
+
+  {
+    fileName: "weapon_on/helmet_off/aura",
+    growEditionSizeTo: 10,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth_w" },
+      { name: "rare" },
+    ],
+  },
+  {
+    fileName: "weapon_on/helmet_off/none",
+    growEditionSizeTo: 10,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth_w" },
+    ],
+  },
+  {
+    fileName: "weapon_on/helmet_on/aura",
+    growEditionSizeTo: 10,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth_h_w" },
+      { name: "rare" },
+    ],
+  },
+  {
+    fileName: "weapon_on/helmet_on/none",
+    growEditionSizeTo: 10,
+    layersOrder: [
+      { name: "face_result" },
+      { name: "cloth_h_w" },
+    ],
+  },
 ];
 
 const shuffleLayerConfigurations = false;
