@@ -144,3 +144,6 @@ dist
 # 成果物
 ./result
 result/
+
+layers
+.DS_Store
