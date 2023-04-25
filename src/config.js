@@ -22,23 +22,26 @@ const solanaMetadata = {
 };
 
 // Solanaを選択した場合、コレクションは自動的に0から開始されます。
+
+// 顔生成
 // const layerConfigurations = [
 //   {
-//     growEditionSizeTo: 1000,
+//     fileName: "face_result",
+//     growEditionSizeTo: 500,
 //     layersOrder: [
-//       { name: "basic" },
-//       { name: "Eye" },
-//       { name: "Hair" },
-//       { name: "Mouse" },
+//       { name: "0_Basic" },
+//       { name: "0_Eye" },
+//       { name: "0_Hair" },
+//       { name: "0_Mouse" },
 //     ],
 //   },
 // ];
 
-// 
+// 服装系
 const layerConfigurations = [
   {
     fileName: "weapon_off/helmet_off/aura",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth" },
@@ -47,7 +50,7 @@ const layerConfigurations = [
   },
   {
     fileName: "weapon_off/helmet_off/none",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth" },
@@ -55,7 +58,7 @@ const layerConfigurations = [
   },
   {
     fileName: "weapon_off/helmet_on/aura",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth_h" },
@@ -64,7 +67,7 @@ const layerConfigurations = [
   },
   {
     fileName: "weapon_off/helmet_on/none",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth_h" },
@@ -73,7 +76,7 @@ const layerConfigurations = [
 
   {
     fileName: "weapon_on/helmet_off/aura",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth_w" },
@@ -82,7 +85,7 @@ const layerConfigurations = [
   },
   {
     fileName: "weapon_on/helmet_off/none",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth_w" },
@@ -90,7 +93,7 @@ const layerConfigurations = [
   },
   {
     fileName: "weapon_on/helmet_on/aura",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth_h_w" },
@@ -99,7 +102,7 @@ const layerConfigurations = [
   },
   {
     fileName: "weapon_on/helmet_on/none",
-    growEditionSizeTo: 10,
+    growEditionSizeTo: 100,
     layersOrder: [
       { name: "face_result" },
       { name: "cloth_h_w" },
